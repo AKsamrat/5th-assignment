@@ -10,3 +10,13 @@
   font-optical-sizing: auto;
   font-weight: weight;
 }
+li {
+  display: flex;
+  gap: 20px;
+  width: 200px;
+  text-align: center;
+  list-style: numeric;
+  justify-content: space-around;
+  margin: auto;
+  gap: 135px;
+}
