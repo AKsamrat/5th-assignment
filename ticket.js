@@ -98,6 +98,11 @@ document.getElementById('next-btn').addEventListener('click', function () {
   document.getElementById('input-name').value = ' ';
   document.getElementById('input-phn').value = ' ';
   document.getElementById('input-email').value = ' ';
+  document.getElementById('ul-container').innerHTML = ' ';
+  document.getElementById('total-price').innerText = ' ';
+  document.getElementById('grand-total').innerText = ' ';
+  document.getElementById('count-seat').innerText = ' ';
+  setHiddenById('next-btn');
 });
 
 // console.log(inputValue);
