@@ -8,12 +8,24 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            greenm: '#1DD100',
+
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body class="raleway">
   <header class="container mx-auto px-6 lg:px-20">
     <nav class="flex justify-between items-center py-6">
-      <h3 class="font-extrabold text-[#030712] text-3xl">AK-Ticket</h3>
+      <h3 class="font-extrabold text-[#030712] text-3xl ">AK-Ticket</h3>
       <div class="flex justify-center items-center gap-8 *text-[18px] lg:flex hidden">
         <a href="">Home</a>
         <a href="">About</a>
@@ -272,17 +284,18 @@
               <hr>
               <div class="flex justify-between items-center  pb-4">
                 <p class="font-bold ">Total Price</p>
-                <p class="font-bold ">BDT <span id="total-price" class="text-lg">0</span></p>
+                <p class="font-bold ">BDT <span id="total-price" class="text-lg inter">0</span></p>
               </div>
-              <div class="bg-white rounded-xl p-2 flex justify-between items-center">
+              <div id="coupon-div" class="bg-white rounded-xl p-2 flex justify-between items-center">
                 <input placeholder="Have any coupon?" type="text" name="" id="input-coupon"
                   class="py-2 px-4 w-full rounded-lg border-slate-100">
-                <button id="apply-btn" class="text-white bg-[#1DD100] rounded-xl font-semibold py-2 px-3">Apply</button>
+                <button id="apply-btn"
+                  class="text-white bg-[#1DD100] rounded-xl font-semibold py-2 px-3 hidden">Apply</button>
 
               </div>
               <div class="flex justify-between items-center  py-4">
                 <p class="font-bold ">Grand Total</span></p>
-                <p class="font-bold ">BDT <span id="grand-total" class="text-lg">0</span></p>
+                <p class="font-bold ">BDT <span id="grand-total" class="text-lg inter">0</span></p>
               </div>
             </div>
             <!-- input area=================== -->
@@ -299,8 +312,24 @@
                 <span class="label-text font-bold pb-3">Email ID</span>
                 <input type="email" placeholder="Enter your email id" class="border-2 rounded-lg py-3 px-6" />
               </label>
-              <button class=" rounded-lg font-bold bg-[#1DD100] text-xl px-32 py-3 w-full">Next</button>
+              <button onclick="my_modal_4.showModal()"
+                class=" rounded-lg font-bold bg-[#1DD100] text-xl px-32 py-3 w-full text-white">Next</button>
             </div>
+            <dialog id="my_modal_4" class="modal">
+              <div class="modal-box w-5/12 max-w-5xl flex flex-col justify-center items-center">
+                <img src="./Images/success.png" alt="">
+                <h3 class="font-bold text-3xl text-[#27AE60] text-center py-5">SUCCESS</h3>
+                <p class="py-4 text-center font-bold">Thank you for Booking Our Bus Seats. <br>
+                  We are working hard to find the best service and deals for you.</p>
+                <p class="py-4 text-center ">Shortly you will find a confirmation in your email.</p>
+                <div class="modal-action flex justify-center items-center">
+                  <form method="dialog">
+                    <!-- if there is a button, it will close the modal -->
+                    <button class="rounded-3xl font-bold bg-[#27AE60] text-xl px-32 py-3 text-white">Continue</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
             <div class="flex justify-evenly items-center mt-4">
               <a class="font-semibold underline" href="">Terms and Conditions</a>
               <a class="font-semibold underline" href="">Cancellation Policy</a>

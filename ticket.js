@@ -8,6 +8,10 @@ for (let index = 0; index < addBtn.length; index++) {
   // console.log(btn);
   btn.addEventListener('click', function (event) {
     count += 1;
+    if (count === 4) {
+      getCouponValue();
+      removeHiddenById('apply-btn');
+    }
     totalCost += 550;
     grandTotal = totalCost - totalCost * coupon;
     setElementValueById('total-price', totalCost);
@@ -18,8 +22,7 @@ for (let index = 0; index < addBtn.length; index++) {
     setElementValueById('count-seat', count);
     const seatName = event.target.innerText;
     setSeatInfo(seatName);
-
-    console.log(seatName);
+    setBackgroundById(seatName);
   });
 }
 //===========================================
@@ -40,4 +43,43 @@ function setSeatInfo(seatName) {
   li.appendChild(p1);
   li.appendChild(p2);
   ulContainer.appendChild(li);
+}
+
+function getCouponValue() {
+  document.getElementById('apply-btn').addEventListener('click', function () {
+    if (document.getElementById('input-coupon').value === 'NEW15') {
+      coupon = 0.15;
+      grandTotal = totalCost - totalCost * coupon;
+      setElementValueById('grand-total', grandTotal);
+      setHiddenById('coupon-div');
+    } else if (document.getElementById('input-coupon').value === 'Couple 20') {
+      coupon = 0.2;
+      grandTotal = totalCost - totalCost * coupon;
+      setElementValueById('grand-total', grandTotal);
+      setHiddenById('coupon-div');
+    } else {
+      alert('Please enter valid Coupon');
+    }
+  });
+}
+
+// console.log(coupon);
+
+function grandTotalCalculation(value) {
+  let totalValue = document.getElementById('total-price').innerText;
+  console.log(totalValue);
+}
+function setBackgroundById(element) {
+  const backgroundText = document.getElementById(element);
+  backgroundText.classList.add('bg-lime-500');
+  backgroundText.classList.add('visibility-none');
+}
+function removeHiddenById(element) {
+  const removeHiddenScreen = document.getElementById(element);
+  removeHiddenScreen.classList.remove('hidden');
+}
+function setHiddenById(element) {
+  const setHiddenScreen = document.getElementById(element);
+  // console.log(setHiddenScreen.classList);
+  setHiddenScreen.classList.add('hidden');
 }
