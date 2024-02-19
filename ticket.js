@@ -7,22 +7,41 @@ for (let index = 0; index < addBtn.length; index++) {
   const btn = addBtn[index];
   // console.log(btn);
   btn.addEventListener('click', function (event) {
-    count += 1;
-    if (count === 4) {
-      getCouponValue();
-      removeHiddenById('apply-btn');
+    if (count < 4) {
+      const isdisable = btn.getAttribute('disabled');
+      if (!isdisable) {
+        count += 1;
+        totalCost += 550;
+        grandTotal = totalCost - totalCost * coupon;
+        setElementValueById('total-price', totalCost);
+        setElementValueById('grand-total', grandTotal);
+        const leftSeat =
+          parseInt(document.getElementById('left-seat').innerText) - 1;
+        setElementValueById('left-seat', leftSeat);
+        setElementValueById('count-seat', count);
+        const seatName = event.target.innerText;
+        setSeatInfo(seatName);
+        setBackgroundById(seatName);
+
+        // count += 1;
+        if (count === 4) {
+          getCouponValue();
+        }
+
+        if (count === 1) {
+          removeHiddenById('apply-btn');
+        }
+        btn.setAttribute('disabled', true);
+      }
+    } else {
+      alert('Your Limit is full');
     }
-    totalCost += 550;
-    grandTotal = totalCost - totalCost * coupon;
-    setElementValueById('total-price', totalCost);
-    setElementValueById('grand-total', grandTotal);
-    const leftSeat =
-      parseInt(document.getElementById('left-seat').innerText) - 1;
-    setElementValueById('left-seat', leftSeat);
-    setElementValueById('count-seat', count);
-    const seatName = event.target.innerText;
-    setSeatInfo(seatName);
-    setBackgroundById(seatName);
+    // count += 1;
+
+    // const btnAnable = event.target.setAtribute(disable - true);
+    // event.target.disabled = true;
+
+    // console.log(document.getElementById(seatName));
   });
 }
 //===========================================
@@ -63,6 +82,26 @@ function getCouponValue() {
   });
 }
 
+document.getElementById('input-name').addEventListener('keyup', function (e) {
+  const inputName = e.target.value;
+  if (inputName.length >= 1) {
+    const inputPhn = document.getElementById('input-phn');
+    inputPhn.addEventListener('keyup', function (e) {
+      const inputValue = e.target.value;
+      if (inputValue.length >= 1) {
+        removeHiddenById('next-btn');
+      }
+    });
+  }
+});
+document.getElementById('next-btn').addEventListener('click', function () {
+  document.getElementById('input-name').value = ' ';
+  document.getElementById('input-phn').value = ' ';
+  document.getElementById('input-email').value = ' ';
+});
+
+// console.log(inputValue);
+
 // console.log(coupon);
 
 function grandTotalCalculation(value) {
@@ -71,13 +110,17 @@ function grandTotalCalculation(value) {
 }
 function setBackgroundById(element) {
   const backgroundText = document.getElementById(element);
-  backgroundText.classList.add('bg-lime-500');
-  backgroundText.classList.add('visibility-none');
+  backgroundText.classList.add('bg-lime-500', 'text-white');
+  // backgroundText.classList.add('visibility-none');
 }
 function removeHiddenById(element) {
   const removeHiddenScreen = document.getElementById(element);
   removeHiddenScreen.classList.remove('hidden');
 }
+// function removeOpacityById(element) {
+//   const removeHiddenScreen = document.getElementById(element);
+//   removeHiddenScreen.classList.remove('opacity-0');
+// }
 function setHiddenById(element) {
   const setHiddenScreen = document.getElementById(element);
   // console.log(setHiddenScreen.classList);

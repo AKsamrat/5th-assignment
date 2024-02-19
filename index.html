@@ -302,18 +302,21 @@
             <div class="space-y-6 mt-5">
               <label class="form-control w-full ">
                 <span class="label-text font-bold pb-3">Passenger Name*</span>
-                <input type="text" placeholder="Enter your name" class="border-2 rounded-lg py-3 px-6" />
+                <input id="input-name" type="text" placeholder="Enter your name" class="border-2 rounded-lg py-3 px-6"
+                  required />
               </label>
               <label class="form-control w-full ">
                 <span class="label-text font-bold pb-3">Phone Number*</span>
-                <input type="tel" placeholder="Enter your phone number" class="border-2 rounded-lg py-3 px-6" />
+                <input id="input-phn" type="number" placeholder="Enter your phone number"
+                  class="border-2 rounded-lg py-3 px-6 " required />
               </label>
               <label class="form-control w-full ">
                 <span class="label-text font-bold pb-3">Email ID</span>
-                <input type="email" placeholder="Enter your email id" class="border-2 rounded-lg py-3 px-6" />
+                <input id="input-email" type="email" placeholder="Enter your email id"
+                  class="border-2 rounded-lg py-3 px-6" />
               </label>
-              <button onclick="my_modal_4.showModal()"
-                class=" rounded-lg font-bold bg-[#1DD100] text-xl px-32 py-3 w-full text-white">Next</button>
+              <button id="next-btn" onclick="my_modal_4.showModal()"
+                class=" hidden rounded-lg font-bold bg-[#1DD100] text-xl px-32 py-3 w-full text-white  ">Next</button>
             </div>
             <dialog id="my_modal_4" class="modal">
               <div class="modal-box w-5/12 max-w-5xl flex flex-col justify-center items-center">
